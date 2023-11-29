@@ -1,0 +1,21 @@
+﻿@model BookShoppingCartMvcUI.Models.Genre
+
+<h3>Edit Genre</h3>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="Id">Genre ID</label>
+        <input asp-for="Id" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="GenreName">Genre Name</label>
+        <input asp-for="GenreName" class="form-control" />
+        <span asp-validation-for="GenreName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

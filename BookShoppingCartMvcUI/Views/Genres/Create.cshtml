@@ -1,0 +1,12 @@
+﻿@model BookShoppingCartMvcUI.ViewModel.GenreViewModel
+<h3>Create New Genre</h3>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="GenreName"></label>
+        <input asp-for="GenreName" class="form-control" />
+        <span asp-validation-for="GenreName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Genre</button>
+</form>

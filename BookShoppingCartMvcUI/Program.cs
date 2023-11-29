@@ -16,6 +16,8 @@ builder.Services
     .AddDefaultUI()
     .AddDefaultTokenProviders();
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IGenreRepository, GenreRepository>();
+builder.Services.AddTransient<IBookRepository, BookRepository>();
 builder.Services.AddTransient<IHomeRepository,HomeRepository>();
 builder.Services.AddTransient<ICartRepository,CartRepository>();
 builder.Services.AddTransient<IUserOrderRepository,UserOrderRepository>();

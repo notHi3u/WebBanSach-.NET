@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Genre>
+
+<h2>Genres</h2>
+
+<p>
+    <a asp-action="Create">
+        <button type="button" class="btn btn-primary">Create New</button>
+    </a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Genre Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var genre in Model)
+        {
+            <tr>
+                <td>@genre.Id</td>
+                <td>@genre.GenreName</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@genre.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@genre.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@genre.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
