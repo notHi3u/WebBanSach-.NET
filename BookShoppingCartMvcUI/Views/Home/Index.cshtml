@@ -7,7 +7,7 @@
         <div class="col-12">
             <label class="visually-hidden" for="genreId">Genres</label>
             <select class="form-select" id="genreId" name="genreId">
-                <option selected>Genre</option>
+                <option selected>Genre</option> 
                 @foreach (var genre in Model.Genres)
                 {
                     <option selected="@(genre.Id == Model.GenreId)" value="@genre.Id">@genre.GenreName</option>
@@ -48,7 +48,7 @@
                 <p class="card-text">
                     <b>Genre: </b>@book.GenreName <br />
                     <b>Author: </b>@book.AuthorName <br />
-                    <b>Price: </b>@book.Price
+                    <b>Price: </b>@book.Price $
                 </p>
                 <button type="button" onclick="add(@book.Id)" class="btn btn-primary">Add to cart</button>
             </div>
