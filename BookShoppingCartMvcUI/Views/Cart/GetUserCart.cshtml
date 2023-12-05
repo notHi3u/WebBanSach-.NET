@@ -13,7 +13,7 @@
                 <th>Book</th>
                 <th>Image</th>
                 <th>Genre</th>
-                <th>Unit Price(INR)</th>
+                <th>Unit Price(VND)</th>
                 <th>Total Price</th>
                 <th>Action</th>
             </tr>
@@ -43,7 +43,7 @@
         </table>
 
         <div class="my-2">
-            <h5>Total(INR): </h5>
+            <h5>Total(VND): </h5>
             @(Model.CartDetails.Select(item => item.Book.Price * item.Quantity).Sum())
         </div>
 

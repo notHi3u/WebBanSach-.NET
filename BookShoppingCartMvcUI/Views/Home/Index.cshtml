@@ -19,13 +19,13 @@
             <label class="visually-hidden" for="sterm">Search by title</label>
             <div class="input-group">
                 <div class="input-group-text"></div>
-                <input type="text" class="form-control" value="@Model.STerm" id="sterm" name="sterm" placeholder="Sarch by title">
+                <input type="text" class="form-control" value="@Model.STerm" id="sterm" name="sterm" placeholder="Search by title">
             </div>
         </div>
 
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Search</button>
-            <a href="/Home/Index" class="btn btn-dark">Reset</a>
+            <a href="/Home/Index" class="btn btn-info">Reset</a>
         </div>
     </form>
 </div>
@@ -48,7 +48,7 @@
                 <p class="card-text">
                     <b>Genre: </b>@book.GenreName <br />
                     <b>Author: </b>@book.AuthorName <br />
-                    <b>Price: </b>@book.Price $
+                    <b>Price: </b>@book.Price VND
                 </p>
                 <button type="button" onclick="add(@book.Id)" class="btn btn-primary">Add to cart</button>
             </div>
