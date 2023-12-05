@@ -190,6 +190,41 @@ namespace BookShoppingCartMvcUI.Repositories
             return userId;
         }
 
+        public async Task<int> ClearCart()
+        {
+            using var transaction = _db.Database.BeginTransaction();
+            try
+            {
+                string userId = GetUserId();
+                if (string.IsNullOrEmpty(userId))
+                    throw new Exception("User is not logged-in");
 
+                var cart = await GetCart(userId);
+                if (cart is null)
+                    throw new Exception("Invalid cart");
+
+                var cartDetails = _db.CartDetails
+                                    .Where(a => a.ShoppingCartId == cart.Id)
+                                    .ToList();
+
+                if (cartDetails.Count == 0)
+                    return 0; // No items to clear
+
+                _db.CartDetails.RemoveRange(cartDetails);
+                _db.SaveChanges();
+
+                transaction.Commit();
+
+                return cartDetails.Count; // Return the count of items cleared from the cart
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions, log the error, or provide an error message to the user.
+                // For simplicity, you can uncomment the lines below if needed.
+                // TempData["ErrorMessage"] = ex.Message;
+                // return RedirectToAction("Error", "Home");
+                throw; // Rethrow the exception to be caught by the calling method.
+            }
+        }
     }
 }

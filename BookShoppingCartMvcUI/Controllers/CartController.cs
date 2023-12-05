@@ -39,11 +39,25 @@ namespace BookShoppingCartMvcUI.Controllers
 
         public async Task<IActionResult> Checkout()
         {
-            bool isCheckedOut = await _cartRepo.DoCheckout();
-            if (!isCheckedOut)
-                throw new Exception("Something happen in server side");
-            return RedirectToAction("Index", "Home");
+            try
+            {
+                // Clear the cart
+                var itemsCleared = await _cartRepo.ClearCart();
+
+                // Perform checkout logic if needed...
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions, log the error, or provide an error message to the user.
+                // For simplicity, you can uncomment the lines below if needed.
+                // TempData["ErrorMessage"] = ex.Message;
+                // return RedirectToAction("Error", "Home");
+                return View("Error"); // You may want to create an Error view to display the error.
+            }
         }
+
 
     }
 }
